@@ -7,7 +7,7 @@ Returns an image-puller daemonset. Two daemonsets will be created like this.
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: {{ print .componentPrefix "image-puller" }}
+  name: {{ .Release.Name }}-{{ print .componentPrefix "image-puller" }}
   labels:
     {{- include "jupyterhub.labels" . | nindent 4 }}
     {{- if .hook }}

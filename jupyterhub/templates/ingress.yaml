@@ -8,7 +8,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: jupyterhub
+  name: {{ .Release.Name }}-jupyterhub
   labels:
     {{- include "jupyterhub.labels" . | nindent 4 }}
   {{- if .Values.ingress.annotations }}

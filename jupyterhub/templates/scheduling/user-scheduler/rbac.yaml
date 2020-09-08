@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: user-scheduler
+  name: {{ .Release.Name }}-user-scheduler
   labels:
     {{- include "jupyterhub.labels" . | nindent 4 }}
 ---
@@ -16,7 +16,7 @@ metadata:
     {{- include "jupyterhub.labels" $_ | nindent 4 }}
 subjects:
   - kind: ServiceAccount
-    name: user-scheduler
+    name: {{ .Release.Name }}-user-scheduler
     namespace: {{ .Release.Namespace }}
 roleRef:
   kind: ClusterRole
@@ -33,6 +33,7 @@ metadata:
 rules:
   # Support leader elections
   - apiGroups: [""]
+    # TODO: something needs to change here?
     resourceNames: ["user-scheduler"]
     resources: ["configmaps"]
     verbs: ["get", "update"]
@@ -54,7 +55,7 @@ metadata:
     {{- include "jupyterhub.labels" $_ | nindent 4 }}
 subjects:
   - kind: ServiceAccount
-    name: user-scheduler
+    name: {{ .Release.Name }}-user-scheduler
     namespace: {{ .Release.Namespace }}
 roleRef:
   kind: ClusterRole
