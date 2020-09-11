@@ -144,6 +144,18 @@ spec:
               value: "1"
             - name: HELM_RELEASE_NAME
               value: {{ .Release.Name | quote }}
+            - name: PROXY_API_SERVICE_HOST
+              value: "$({{ .Release.Name | upper }}_PROXY_API_SERVICE_HOST)"
+            - name: PROXY_API_SERVICE_PORT
+              value: "$({{ .Release.Name | upper }}_PROXY_API_SERVICE_PORT)"
+            - name: PROXY_PUBLIC_SERVICE_HOST
+              value: "$({{ .Release.Name | upper }}_PROXY_PUBLIC_SERVICE_HOST)"
+            - name: PROXY_PUBLIC_SERVICE_PORT
+              value: "$({{ .Release.Name | upper }}_PROXY_PUBLIC_SERVICE_PORT)"
+            - name: HUB_SERVICE_HOST
+              value: "$({{ .Release.Name | upper }}_HUB_SERVICE_HOST)"
+            - name: HUB_SERVICE_PORT
+              value: "$({{ .Release.Name | upper }}_HUB_SERVICE_PORT)"
             {{- if .Values.hub.cookieSecret }}
             - name: JPY_COOKIE_SECRET
               valueFrom:

@@ -56,6 +56,7 @@ spec:
             - --ip=0.0.0.0
             - --api-ip=0.0.0.0
             - --api-port=8001
+# TODO: check whether this needs to be updated as well
             - --default-target=http://$(HUB_SERVICE_HOST):$(HUB_SERVICE_PORT)
             - --error-target=http://$(HUB_SERVICE_HOST):$(HUB_SERVICE_PORT)/hub/error
             {{- if $manualHTTPS }}

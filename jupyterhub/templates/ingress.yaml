@@ -25,7 +25,8 @@ spec:
         paths:
           - path: {{ $.Values.hub.baseUrl }}{{ $.Values.ingress.pathSuffix }}
             backend:
-              serviceName: proxy-public
+              #TODO: KM must be templated somehow as .Release.Name does not seem to work
+              serviceName: blabla-proxy-public
               servicePort: 80
     {{- end }}
   {{- if .Values.ingress.tls }}
