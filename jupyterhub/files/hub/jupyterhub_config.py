@@ -201,6 +201,9 @@ for key in (
         )
     )
 
+# Configure pod name template
+c.KubeSpawner.pod_name_template = f"{release}-{get_config('singleuser.podNameTemplate')}"
+
 # Configure dynamically provisioning pvc
 storage_type = get_config('singleuser.storage.type')
 

@@ -248,6 +248,7 @@ singleuser:
   uid: 1000
   fsGid: 100
   serviceAccountName:
+  podNameTemplate: jupyter-{username}--{servername}
   storage:
     type: dynamic
     extraLabels: {}
